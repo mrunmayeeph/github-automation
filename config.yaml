@@ -1,0 +1,51 @@
+# config.yaml — GitHub Activity Bot configuration
+# All meaningful parameters live here. No magic numbers in source code.
+# See README.md for a full description of every key.
+
+# Global
+
+# Set to true to prevent BOTH agents from making any API calls.
+kill_switch: false
+
+# Daily Commit Agent
+
+daily_commit:
+  # Name of the tracking file that will be created/updated in the target repo.
+  tracking_file: ".contributions"
+
+  # Number of commits made each day (inclusive range).
+  min_commits: 1
+  max_commits: 3
+
+  # Pool of commit messages. Messages are cycled if fewer than max_commits entries exist.
+  commit_messages:
+    - "chore: daily maintenance update"
+    - "chore: update activity log"
+    - "chore: automated contribution"
+    - "chore: keep the streak alive"
+    - "chore: routine upkeep"
+    - "docs: minor wording tweak"
+    - "chore: housekeeping"
+
+# Project Creator Agent
+
+project_creator:
+  # How often the agent creates a new project (in days).
+  interval_days: 7
+
+  # Programming languages to choose from when generating a new project.
+  # Currently supported: python, javascript
+  languages:
+    - python
+    - javascript
+
+  # Set to true to create repositories as private instead of public.
+  private_repos: false
+
+  # Optional external AI API for project idea generation.
+  # Set enabled: true and provide a HUGGINGFACE_API_TOKEN in your .env file.
+  ai_api:
+    enabled: false
+    # HuggingFace Inference API endpoint for a text-generation model.
+    endpoint: "https://api-inference.huggingface.co/models/TinyLlama/TinyLlama-1.1B-Chat-v1.0"
+    timeout_seconds: 15
