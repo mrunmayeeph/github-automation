@@ -173,8 +173,6 @@ project_creator:
 GITHUB_TOKEN=ghp_YourTokenHere
 ```
 
-> ⚠️ **Security reminder**: the `.env` file is listed in `.gitignore` and must never be
-> committed to version control.
 
 ### HuggingFace Token (optional)
 
